@@ -41,25 +41,79 @@
     <!-- ================= Boot Screen ================= -->
 
     <section id="boot-screen">
+<section id="boot-screen">
 
-        <div class="boot-container">
+    <div class="scan-line"></div>
 
-            <h1>NEXUS OS</h1>
+    <div class="boot-container">
 
-            <div class="boot-log" id="boot-log">
+        <h1 class="boot-logo">
+            NEXUS OS
+        </h1>
 
-                <p>Initializing Kernel...</p>
+        <p class="boot-subtitle">
+            Next Generation Developer Workspace
+        </p>
+
+        <div
+            class="boot-log"
+            id="boot-log">
+
+            <p>> Initializing Kernel...</p>
+
+        </div>
+
+        <div class="loading-wrapper">
+
+            <div class="loading-info">
+
+                <span class="loading-title">
+
+                    Boot Progress
+
+                </span>
+
+                <span
+                    id="loading-percent"
+                    class="loading-percent">
+
+                    0%
+
+                </span>
 
             </div>
 
             <div class="loading-bar">
 
-                <div class="loading-progress"></div>
+                <div
+                    id="loading-progress"
+                    class="loading-progress">
+
+                </div>
 
             </div>
 
         </div>
 
+        <div class="boot-status">
+
+            <span id="boot-status">
+
+                Starting...
+
+            </span>
+
+            <span>
+
+                Build 1.0
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
     </section>
 
     <!-- ================= Desktop ================= -->
