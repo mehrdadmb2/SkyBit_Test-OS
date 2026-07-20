@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexus OS</title>
+
+    <meta name="description" content="Next Generation Developer Workspace">
+
+    <link rel="icon" href="assets/icons/favicon.ico">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/desktop.css">
+    <link rel="stylesheet" href="assets/css/windows.css">
+    <link rel="stylesheet" href="assets/css/taskbar.css">
+    <link rel="stylesheet" href="assets/css/terminal.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- ================= Boot Screen ================= -->
+
+    <section id="boot-screen">
+
+        <div class="boot-container">
+
+            <h1>NEXUS OS</h1>
+
+            <div class="boot-log" id="boot-log">
+
+                <p>Initializing Kernel...</p>
+
+            </div>
+
+            <div class="loading-bar">
+
+                <div class="loading-progress"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= Desktop ================= -->
+
+    <section id="desktop" class="hidden">
+
+        <!-- Wallpaper -->
+
+        <div id="wallpaper"></div>
+
+        <!-- Desktop Icons -->
+
+        <div id="desktop-icons">
+
+        </div>
+
+        <!-- Window Area -->
+
+        <div id="window-area">
+
+        </div>
+
+        <!-- Taskbar -->
+
+        <footer id="taskbar">
+
+            <div class="taskbar-left">
+
+                <button id="start-button">
+
+                    <i class="fa-solid fa-cube"></i>
+
+                </button>
+
+            </div>
+
+            <div class="taskbar-center">
+
+            </div>
+
+            <div class="taskbar-right">
+
+                <span id="clock"></span>
+
+            </div>
+
+        </footer>
+
+    </section>
+
+    <!-- ================= Scripts ================= -->
+
+    <script src="assets/js/boot.js"></script>
+
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/desktop.js"></script>
+
+    <script src="assets/js/windowManager.js"></script>
+
+    <script src="assets/js/terminal.js"></script>
+
+    <script src="assets/js/settings.js"></script>
+
+    <script src="assets/js/clock.js"></script>
+
+    <script src="assets/js/explorer.js"></script>
+
+    <script src="assets/js/browser.js"></script>
+
+    <script src="assets/js/tools.js"></script>
+
+    <script src="assets/js/projects.js"></script>
+
+    <script src="assets/js/dashboard.js"></script>
+
+    <script src="assets/js/animations.js"></script>
+
+</body>
+
+</html>
