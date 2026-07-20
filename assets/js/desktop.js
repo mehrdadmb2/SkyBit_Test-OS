@@ -69,3 +69,46 @@ const desktopIcons = [
 
 const iconContainer =
 document.getElementById("desktop-icons");
+
+function createDesktopIcons(){
+
+    desktopIcons.forEach(app=>{
+
+        const icon =
+        document.createElement("div");
+
+        icon.className="desktop-icon";
+
+        icon.innerHTML=`
+
+            <div class="icon">
+
+                ${app.icon}
+
+            </div>
+
+            <span>
+
+                ${app.title}
+
+            </span>
+
+        `;
+
+        icon.onclick=()=>{
+
+            openWindow(app);
+
+        };
+
+        iconContainer.appendChild(icon);
+
+    });
+
+}
+
+function initializeDesktop(){
+
+    createDesktopIcons();
+
+}
