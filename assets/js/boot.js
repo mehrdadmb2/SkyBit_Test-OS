@@ -81,7 +81,7 @@ const bootMessages = [
 
 "Finalizing...",
 
-"Welcome to Nexus OS"
+"Welcome to SkyBit OS"
 
 ];
 
@@ -164,7 +164,7 @@ function playBootSound(){
 
 function finishBoot(){
 
-    statusText.textContent = "Launching Nexus OS...";
+    statusText.textContent = "Launching SkyBit OS...";
 
     progress.style.width = "100%";
 
