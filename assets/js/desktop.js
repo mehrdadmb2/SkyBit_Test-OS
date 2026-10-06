@@ -1,114 +1,45 @@
-/* ===========================================================
-   Nexus OS Desktop Engine
-   Version 1.0
-=========================================================== */
+/* SkyBit OS 2.0 — desktop icons and launcher. */
+(() => {
+  const icons = [
+    ['dashboard','Dashboard','fa-solid fa-chart-line'],
+    ['terminal','Terminal','fa-solid fa-terminal'],
+    ['explorer','Explorer','fa-solid fa-folder-tree'],
+    ['browser','Browser','fa-solid fa-globe'],
+    ['projects','Projects','fa-solid fa-layer-group'],
+    ['tools','Toolbox','fa-solid fa-toolbox'],
+    ['notes','Notes','fa-solid fa-note-sticky'],
+    ['settings','Settings','fa-solid fa-sliders']
+  ];
 
-const desktopIcons = [
-
-    {
-
-        id:"projects",
-
-        title:"Projects",
-
-        icon:"📁"
-
-    },
-
-    {
-
-        id:"terminal",
-
-        title:"Terminal",
-
-        icon:"💻"
-
-    },
-
-    {
-
-        id:"browser",
-
-        title:"Browser",
-
-        icon:"🌐"
-
-    },
-
-    {
-
-        id:"dashboard",
-
-        title:"Dashboard",
-
-        icon:"📊"
-
-    },
-
-    {
-
-        id:"gallery",
-
-        title:"Gallery",
-
-        icon:"🖼️"
-
-    },
-
-    {
-
-        id:"settings",
-
-        title:"Settings",
-
-        icon:"⚙️"
-
-    }
-
-];
-
-const iconContainer =
-document.getElementById("desktop-icons");
-
-function createDesktopIcons(){
-
-    desktopIcons.forEach(app=>{
-
-        const icon =
-        document.createElement("div");
-
-        icon.className="desktop-icon";
-
-        icon.innerHTML=`
-
-            <div class="icon">
-
-                ${app.icon}
-
-            </div>
-
-            <span>
-
-                ${app.title}
-
-            </span>
-
-        `;
-
-        icon.onclick=()=>{
-
-            openWindow(app);
-
-        };
-
-        iconContainer.appendChild(icon);
-
+  function createDesktopIcons() {
+    const container = document.getElementById('desktop-icons');
+    if (!container || container.dataset.ready) return;
+    container.dataset.ready='1';
+    container.innerHTML = icons.map(([id,title,icon]) => `<button class="desktop-icon" data-app="${id}" title="Open ${title}"><span class="icon"><i class="${icon}"></i></span><span>${title}</span></button>`).join('');
+    container.querySelectorAll('[data-app]').forEach(btn => {
+      btn.addEventListener('dblclick', () => window.openApp(btn.dataset.app));
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.desktop-icon').forEach(x => x.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+      btn.addEventListener('touchend', () => window.openApp(btn.dataset.app), {passive:true});
     });
+  }
 
-}
+  function buildLauncher() {
+    const container = document.getElementById('launcher-apps');
+    if (!container) return;
+    container.innerHTML = icons.map(([id,title,icon]) => `<button class="launcher-app" data-launch-app="${id}"><span class="la-icon"><i class="${icon}"></i></span><span><strong>${title}</strong><small>${SkyBit.apps[id]?.category || 'System'}</small></span></button>`).join('');
+    container.querySelectorAll('[data-launch-app]').forEach(btn => btn.addEventListener('click', () => {
+      document.getElementById('start-menu')?.classList.add('hidden');
+      window.openApp(btn.dataset.launchApp);
+    }));
+  }
 
-function initializeDesktop(){
-
+  window.initializeDesktop = () => {
     createDesktopIcons();
-
-}
+    buildLauncher();
+    setTimeout(() => window.notify?.('Nexus initialized', 'Desktop environment is ready for showcase mode.', 'fa-solid fa-bolt'), 600);
+    setTimeout(() => window.notify?.('Tip', 'Double-click a desktop icon or use the Start launcher.', 'fa-solid fa-lightbulb'), 1800);
+  };
+})();

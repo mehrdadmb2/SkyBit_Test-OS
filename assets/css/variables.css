@@ -1,76 +1,61 @@
-/* =====================================================
-   Nexus OS - Variables
-   ===================================================== */
-
 :root {
+  --bg: #050712;
+  --bg-2: #090c19;
+  --surface: rgba(12, 17, 31, .66);
+  --surface-2: rgba(17, 23, 41, .8);
+  --surface-3: rgba(8, 12, 25, .88);
+  --text: #f6fbff;
+  --muted: #8fa1bb;
+  --dim: #59687d;
+  --cyan: #4ce8ff;
+  --cyan-2: #00bfe8;
+  --violet: #9a6bff;
+  --purple: #7c3cff;
+  --pink: #ff5fd2;
+  --green: #46f5a1;
+  --amber: #ffc76b;
+  --red: #ff667c;
+  --line: rgba(255,255,255,.09);
+  --line-strong: rgba(120,220,255,.28);
+  --glass-blur: 24px;
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --shadow: 0 22px 70px rgba(0,0,0,.52), 0 4px 18px rgba(0,0,0,.32);
+  --shadow-glow: 0 0 0 1px rgba(255,255,255,.04), 0 18px 70px rgba(72,215,255,.12), 0 0 60px rgba(122,63,255,.14);
+  --taskbar-h: 68px;
+  --font-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-tech: Orbitron, Rajdhani, Inter, sans-serif;
+  --font-jp: "Noto Sans JP", sans-serif;
+  --ease: cubic-bezier(.2,.75,.25,1);
+  --speed: 240ms;
+  --motion: 1;
+  --glow-scale: 1;
+}
 
-    /* ========= Colors ========= */
+body.theme-ice {
+  --cyan: #7de9ff;
+  --cyan-2: #25b8ff;
+  --violet: #6d8fff;
+  --purple: #5271ff;
+  --pink: #ff7fb6;
+  --surface: rgba(10, 19, 30, .66);
+}
 
-    --primary: #00d9ff;
-    --secondary: #8a2eff;
-    --accent: #00ff9d;
+body.theme-amber {
+  --cyan: #ffd36b;
+  --cyan-2: #ff9b42;
+  --violet: #ff7254;
+  --purple: #ff4d8f;
+  --pink: #ffb45e;
+  --green: #8affd2;
+}
 
-    --danger: #ff4d4d;
-    --warning: #ffb100;
-    --success: #00d26a;
-
-    --background: #05070b;
-    --background-secondary: #0b1017;
-
-    --surface: rgba(22, 27, 34, 0.70);
-    --surface-light: rgba(255,255,255,.05);
-
-    --border: rgba(255,255,255,.08);
-
-    --text: #ffffff;
-    --text-secondary: #b9c0c9;
-    --text-muted: #6d7887;
-
-    /* ========= Glow ========= */
-
-    --glow-blue: 0 0 12px rgba(0,217,255,.7);
-    --glow-purple: 0 0 12px rgba(138,46,255,.7);
-    --glow-green: 0 0 12px rgba(0,255,157,.7);
-
-    /* ========= Radius ========= */
-
-    --radius-small: 8px;
-    --radius: 16px;
-    --radius-large: 24px;
-
-    /* ========= Blur ========= */
-
-    --blur: 18px;
-
-    /* ========= Shadow ========= */
-
-    --shadow-small:
-        0 4px 12px rgba(0,0,0,.30);
-
-    --shadow:
-
-        0 8px 30px rgba(0,0,0,.45);
-
-    --shadow-large:
-
-        0 15px 50px rgba(0,0,0,.60);
-
-    /* ========= Font ========= */
-
-    --font: "Inter", sans-serif;
-
-    /* ========= Transition ========= */
-
-    --transition-fast: .15s;
-
-    --transition: .30s;
-
-    --transition-slow: .60s;
-
-    /* ========= Desktop ========= */
-
-    --taskbar-height: 56px;
-
-    --window-header: 42px;
-
+body.theme-mono {
+  --cyan: #f2f5ff;
+  --cyan-2: #a9b3c9;
+  --violet: #c4ccd9;
+  --purple: #8792a7;
+  --pink: #e7ebf5;
+  --green: #d6e0ee;
 }

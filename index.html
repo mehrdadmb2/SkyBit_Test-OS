@@ -1,197 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050712">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="SkyBit OS — a cinematic fictional developer operating system interface built for showcase and experimentation.">
+  <meta name="keywords" content="SkyBit OS, developer workspace, cyberpunk UI, web desktop, glassmorphism">
+  <title>SkyBit OS — Nexus Developer Environment</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 
-    <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nexus OS</title>
-
-    <meta name="description" content="Next Generation Developer Workspace">
-
-    <link rel="icon" href="assets/icons/favicon.ico">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/desktop.css">
-    <link rel="stylesheet" href="assets/css/windows.css">
-    <link rel="stylesheet" href="assets/css/taskbar.css">
-    <link rel="stylesheet" href="assets/css/terminal.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    <link rel="stylesheet" href="assets/css/themes.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/boot.css">
+  <link rel="stylesheet" href="assets/css/os.css">
+  <link rel="stylesheet" href="assets/css/windows.css">
+  <link rel="stylesheet" href="assets/css/taskbar.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-
 <body>
+  <!-- ===================== CINEMATIC BOOT ===================== -->
+  <section id="boot-screen" aria-label="SkyBit OS boot screen">
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="boot-noise" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+    <div class="boot-vignette" aria-hidden="true"></div>
 
-    <!-- ================= Boot Screen ================= -->
+    <div class="boot-corner boot-corner-tl">SYS / SKYBIT-NX <span>01</span></div>
+    <div class="boot-corner boot-corner-tr">SECURE BOOT <span>ONLINE</span></div>
+    <div class="boot-corner boot-corner-bl">東京 // 35.6762°N 139.6503°E</div>
+    <div class="boot-corner boot-corner-br">NODE 7F-9X</div>
 
-    <section id="boot-screen">
-<section id="boot-screen">
-
-    <div class="scan-line"></div>
-
-    <div class="boot-container">
-
-        <h1 class="boot-logo">
-            NEXUS OS
-        </h1>
-
-        <p class="boot-subtitle">
-            Next Generation Developer Workspace
-        </p>
-
-        <div
-            class="boot-log"
-            id="boot-log">
-
-            <p>> Initializing Kernel...</p>
-
+    <div class="boot-shell glass-panel">
+      <div class="boot-header">
+        <div class="boot-orb" aria-hidden="true">
+          <span class="orb-ring ring-a"></span>
+          <span class="orb-ring ring-b"></span>
+          <span class="orb-core"></span>
         </div>
-
-        <div class="loading-wrapper">
-
-            <div class="loading-info">
-
-                <span class="loading-title">
-
-                    Boot Progress
-
-                </span>
-
-                <span
-                    id="loading-percent"
-                    class="loading-percent">
-
-                    0%
-
-                </span>
-
-            </div>
-
-            <div class="loading-bar">
-
-                <div
-                    id="loading-progress"
-                    class="loading-progress">
-
-                </div>
-
-            </div>
-
+        <div class="boot-brand-block">
+          <div class="eyebrow"><span class="status-dot"></span> SKYBIT SYSTEMS // NEXUS</div>
+          <h1 class="boot-logo" data-text="SKYBIT OS">SKYBIT OS</h1>
+          <p class="boot-subtitle">次世代デベロッパー・ワークスペース</p>
+          <div class="boot-badges">
+            <span class="badge badge-cyan">SECURE BOOT</span>
+            <span class="badge badge-green">KERNEL OK</span>
+            <span class="badge badge-purple">BUILD 2.0.0</span>
+          </div>
         </div>
+      </div>
 
-        <div class="boot-status">
+      <div class="boot-hud">
+        <div class="boot-hud-line"><span>SYSTEM</span><b>SKYBIT_NX</b></div>
+        <div class="boot-hud-line"><span>PROFILE</span><b>DEVELOPER</b></div>
+        <div class="boot-hud-line"><span>MODE</span><b>SHOWCASE</b></div>
+        <div class="boot-hud-line"><span>NETWORK</span><b id="boot-network-state">SIMULATED</b></div>
+      </div>
 
-            <span id="boot-status">
+      <div class="boot-log-wrap">
+        <div class="section-label"><span>BOOT STREAM</span><span id="boot-stream-count">00 / 00</span></div>
+        <div class="boot-log" id="boot-log" role="log" aria-live="polite"></div>
+      </div>
 
-                Starting...
-
-            </span>
-
-            <span>
-
-                Build 1.0
-
-            </span>
-
+      <div class="loading-wrapper">
+        <div class="loading-info">
+          <div>
+            <span class="loading-title">NEXUS INITIALIZATION</span>
+            <span class="loading-subtitle">Mounting workspace / calibrating visual core</span>
+          </div>
+          <span id="loading-percent" class="loading-percent">0%</span>
         </div>
+        <div class="loading-bar" aria-label="Boot progress">
+          <div id="loading-progress" class="loading-progress"></div>
+          <div class="loading-sparks" aria-hidden="true"></div>
+        </div>
+      </div>
 
+      <div class="boot-footer">
+        <span><i class="fa-solid fa-shield-halved"></i> Integrity 100%</span>
+        <span id="boot-status">Preparing runtime...</span>
+        <button id="boot-skip" class="boot-skip" type="button">SKIP <i class="fa-solid fa-forward-step"></i></button>
+      </div>
     </div>
 
-</section>
-    </section>
+    <div class="matrix-rain-label" aria-hidden="true">システム / 開発 / ネットワーク / 記憶 / 未来 / 接続 / 空想</div>
+  </section>
 
-    <!-- ================= Desktop ================= -->
+  <!-- ===================== DESKTOP ===================== -->
+  <main id="desktop" class="hidden" aria-label="SkyBit OS desktop">
+    <div id="wallpaper" aria-hidden="true">
+      <canvas id="space-canvas"></canvas>
+      <div class="aurora aurora-a"></div>
+      <div class="aurora aurora-b"></div>
+      <div class="hero-core">
+        <div class="hero-grid"></div>
+        <div class="hero-ring hero-ring-a"></div>
+        <div class="hero-ring hero-ring-b"></div>
+        <div class="hero-core-dot"></div>
+      </div>
+      <div class="wallpaper-noise"></div>
+      <div class="wallpaper-grid"></div>
+    </div>
 
-    <section id="desktop" class="hidden">
+    <header class="system-rail glass-panel">
+      <div class="rail-brand"><span class="brand-mark">SB</span><span class="brand-title">SKYBIT <b>OS</b></span></div>
+      <div class="rail-center">
+        <span class="rail-pill live"><span class="status-dot"></span> SYSTEM ONLINE</span>
+        <span class="rail-pill">NEXUS // 2.0</span>
+        <span class="rail-pill" id="rail-session">SESSION 00:00:00</span>
+      </div>
+      <div class="rail-right">
+        <span class="rail-icon" title="Network status"><i class="fa-solid fa-wifi"></i></span>
+        <span class="rail-icon" title="Security"><i class="fa-solid fa-shield"></i></span>
+        <button class="rail-avatar" id="rail-avatar" title="Open profile"><i class="fa-solid fa-user-astronaut"></i></button>
+      </div>
+    </header>
 
-        <!-- Wallpaper -->
+    <div class="desktop-overlay">
+      <div class="desktop-quote glass-panel">
+        <span class="jp">自由に作れ。未来を設計しろ。</span>
+        <span class="en">BUILD FREELY. DESIGN THE FUTURE.</span>
+      </div>
+      <div class="desktop-watermark">SKYBIT / NX-OS // VISUAL ENVIRONMENT</div>
+    </div>
 
-        <div id="wallpaper"></div>
+    <section id="desktop-icons" aria-label="Applications"></section>
+    <section id="window-area" aria-live="polite"></section>
 
-        <!-- Desktop Icons -->
-
-        <div id="desktop-icons">
-
+    <aside id="start-menu" class="start-menu glass-panel hidden" aria-label="Start menu">
+      <div class="start-glow" aria-hidden="true"></div>
+      <div class="start-head">
+        <div>
+          <div class="eyebrow"><span class="status-dot"></span> NEXUS LAUNCHER</div>
+          <h2>SkyBit OS</h2>
         </div>
+        <div class="start-user"><i class="fa-solid fa-user-astronaut"></i><span>Developer</span></div>
+      </div>
+      <label class="launcher-search"><i class="fa-solid fa-magnifying-glass"></i><input id="launcher-search-input" type="search" placeholder="Search applications..." autocomplete="off"></label>
+      <div class="launcher-section-title">PINNED</div>
+      <div id="launcher-apps" class="launcher-apps"></div>
+      <div class="launcher-footer">
+        <span><i class="fa-solid fa-cube"></i> Showcase environment</span>
+        <button id="launcher-settings"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </div>
+    </aside>
 
-        <!-- Window Area -->
+    <aside id="notification-center" class="notification-center glass-panel hidden" aria-label="Notification center">
+      <div class="panel-heading"><span>NOTIFICATIONS</span><button id="clear-notifications">CLEAR</button></div>
+      <div id="notification-list" class="notification-list"></div>
+    </aside>
 
-        <div id="window-area">
+    <aside id="quick-panel" class="quick-panel glass-panel hidden" aria-label="Quick controls">
+      <div class="panel-heading"><span>QUICK CONTROL</span><span id="quick-date"></span></div>
+      <div class="quick-grid">
+        <button class="quick-tile active" data-action="theme"><i class="fa-solid fa-moon"></i><span>Night Core</span></button>
+        <button class="quick-tile active" data-action="grid"><i class="fa-solid fa-border-all"></i><span>HUD Grid</span></button>
+        <button class="quick-tile active" data-action="particles"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Particles</span></button>
+        <button class="quick-tile" data-action="motion"><i class="fa-solid fa-person-running"></i><span>Motion</span></button>
+      </div>
+      <div class="quick-slider"><span><i class="fa-solid fa-sun"></i> Glow</span><input id="glow-slider" type="range" min="40" max="140" value="100"></div>
+    </aside>
 
+    <footer id="taskbar">
+      <div class="taskbar-left">
+        <button id="start-button" class="taskbar-button start-button" title="Start menu"><span class="start-cube">✦</span></button>
+      </div>
+      <div class="taskbar-center" id="taskbar-apps"></div>
+      <div class="taskbar-right">
+        <button id="quick-button" class="taskbar-button" title="Quick controls"><i class="fa-solid fa-sliders"></i></button>
+        <button id="notification-button" class="taskbar-button notification-button" title="Notifications"><i class="fa-regular fa-bell"></i><span id="notification-count">0</span></button>
+        <div class="tray-divider"></div>
+        <button id="clock-button" class="clock-button" title="Open dashboard">
+          <span id="clock">--:--</span>
+          <small id="date">---</small>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <template id="window-template">
+    <article class="os-window glass-panel" data-app-window>
+      <header class="window-titlebar">
+        <div class="window-title-wrap"><span class="window-app-icon"></span><span class="window-title"></span><span class="window-status-dot"></span></div>
+        <div class="window-controls">
+          <button data-window-action="minimize" title="Minimize"><i class="fa-solid fa-minus"></i></button>
+          <button data-window-action="maximize" title="Maximize"><i class="fa-regular fa-square"></i></button>
+          <button class="close-control" data-window-action="close" title="Close"><i class="fa-solid fa-xmark"></i></button>
         </div>
+      </header>
+      <div class="window-toolbar" data-window-toolbar></div>
+      <div class="window-body" data-window-body></div>
+      <footer class="window-statusbar"><span data-window-status>Ready</span><span class="window-resize-handle" data-window-action="resize"></span></footer>
+    </article>
+  </template>
 
-        <!-- Taskbar -->
+  <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 
-        <footer id="taskbar">
-
-            <div class="taskbar-left">
-
-                <button id="start-button">
-
-                    <i class="fa-solid fa-cube"></i>
-
-                </button>
-
-            </div>
-
-            <div class="taskbar-center">
-
-            </div>
-
-            <div class="taskbar-right">
-
-                <span id="clock"></span>
-
-            </div>
-
-        </footer>
-
-    </section>
-
-    <!-- ================= Scripts ================= -->
-
-    <script src="assets/js/boot.js"></script>
-
-    <script src="assets/js/app.js"></script>
-
-    <script src="assets/js/desktop.js"></script>
-
-    <script src="assets/js/windowManager.js"></script>
-
-    <script src="assets/js/terminal.js"></script>
-
-    <script src="assets/js/settings.js"></script>
-
-    <script src="assets/js/clock.js"></script>
-
-    <script src="assets/js/explorer.js"></script>
-
-    <script src="assets/js/browser.js"></script>
-
-    <script src="assets/js/tools.js"></script>
-
-    <script src="assets/js/projects.js"></script>
-
-    <script src="assets/js/dashboard.js"></script>
-
-    <script src="assets/js/animations.js"></script>
-
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/boot.js"></script>
+  <script src="assets/js/windowManager.js"></script>
+  <script src="assets/js/desktop.js"></script>
+  <script src="assets/js/terminal.js"></script>
+  <script src="assets/js/explorer.js"></script>
+  <script src="assets/js/browser.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/clock.js"></script>
+  <script src="assets/js/tools.js"></script>
+  <script src="assets/js/animations.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,19 @@
+#taskbar { position:absolute; z-index:90; left:0; right:0; bottom:0; height:var(--taskbar-h); display:grid; grid-template-columns:70px 1fr auto; align-items:center; padding:0 12px; gap:10px; background:linear-gradient(180deg,rgba(7,11,23,.42),rgba(2,5,12,.88)); border-top:1px solid rgba(255,255,255,.065); backdrop-filter:blur(22px) saturate(150%); -webkit-backdrop-filter:blur(22px) saturate(150%); box-shadow:0 -18px 45px rgba(0,0,0,.32); }
+.taskbar-left { display:flex; align-items:center; }
+.taskbar-button,.clock-button { position:relative; min-width:40px; height:40px; border-radius:12px; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.05); color:#7f91a7; transition:all var(--speed) var(--ease); }
+.taskbar-button:hover,.clock-button:hover { transform:translateY(-2px); color:#e1faff; border-color:rgba(76,232,255,.14); background:rgba(76,232,255,.05); }
+.start-button { display:grid; place-items:center; }
+.start-cube { width:23px; height:23px; display:grid; place-items:center; border-radius:8px; color:#041017; background:linear-gradient(135deg,var(--cyan),var(--violet)); font-size:13px; box-shadow:0 0 18px rgba(76,232,255,.2); }
+.taskbar-center { min-width:0; display:flex; align-items:center; justify-content:center; gap:6px; overflow:hidden; }
+.task-item { min-width:38px; height:38px; padding:0 11px; display:flex; align-items:center; gap:7px; border-radius:11px; color:#7c8ea6; background:rgba(255,255,255,.025); border:1px solid transparent; transition:all var(--speed) var(--ease); }
+.task-item:hover { color:#dff7ff; background:rgba(255,255,255,.04); }
+.task-item.active { color:#dffbff; border-color:rgba(76,232,255,.12); background:linear-gradient(145deg,rgba(76,232,255,.08),rgba(140,78,255,.08)); }
+.task-item i { font-size:12px; }
+.task-item span { max-width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:9px; }
+.taskbar-right { display:flex; align-items:center; gap:6px; }
+.notification-button #notification-count { position:absolute; right:4px; top:3px; min-width:14px; height:14px; padding:0 3px; display:grid; place-items:center; border-radius:99px; color:#071016; background:var(--cyan); font:700 8px var(--font-tech); }
+.notification-button #notification-count:empty { display:none; }
+.tray-divider { width:1px; height:26px; background:rgba(255,255,255,.07); margin:0 3px; }
+.clock-button { width:84px; min-width:84px; height:42px; text-align:right; padding:6px 9px; }
+.clock-button span { display:block; font:600 11px var(--font-tech); }
+.clock-button small { display:block; margin-top:1px; color:#5f7188; font:8px var(--font-tech); }
